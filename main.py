@@ -67,5 +67,15 @@ dict_capteur = {
     "luminosite_atelier": l 
 
 }   
-print(l.nb_anomalies())   # attendu : 7
-print(t.nb_anomalies())   # attendu : 5
+liste_capteurs = list(dict_capteur.values()) 
+
+def tri_insertion(liste):
+    for i in range(1,len(liste)):
+        element = liste[i]
+        j = i-1
+        while j >= 0 and liste[j].nb_anomalies() < element.nb_anomalies():
+            liste[j + 1] = liste[j]
+            j = j - 1               
+        liste[j + 1] = element      
+        print("Après le tour", i, ":", liste)
+    return liste
